@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+        }
+        .bill-display {
+            font-size: 1.2em;
+            color: #444;
+        }
+        .meals {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px; /* Adds spacing between meal options */
+        align-items: flex-start;
+    }
+
+    .meals label {
+        display: inline-flex;
+        align-items: center;
+        margin: 5px 0;
+        white-space: nowrap; /* Prevents wrapping */
+        cursor: pointer; /* Improves user experience */
+    }
+
+    .meals input {
+        margin-right: 10px;
+    }
+    .meals input[type="checkbox"]{
+        margin-top: 15px;
+        margin-left: 5px;
+        size: 15px;
+    }
+
+
+
+    </style>
+</head>
+<body>
+    <form id="eventForm" action="register_event.php" method="POST">
+        <h2>Event Registration</h2>
+
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="eventDate">Event Date</label>
+        <input type="date" id="eventDate" name="eventDate" required>
+
+        <label for="eventChoice">Event Choice</label>
+        <select id="eventChoice" name="eventChoice" required>
+            <option value="">--Select an Event--</option>
+            <option value="birthday">Birthday</option>
+            <option value="anniversary">Anniversary</option>
+            <option value="marriage">Marriage</option>
+            <option value="ring-ceremony">Ring Ceremony</option>
+            <option value="haldi-function">Haldi Function</option>
+            <option value="mehendi-sangeet">Mehendi & Sangeet</option>
+            <option value="naming-ceremony">Naming Ceremony</option>
+        </select>
+
+        <label for="venue">Choose Venue</label>
+        <select id="venue" name="venue" required onchange="calculateBill()">
+            <option value="">--Select a Venue--</option>
+            <option value="Hallimane Malleshwaram,80000">Hallimane Malleshwaram - ₹80,000/day</option>
+            <option value="Palace Grounds,150000">Palace Grounds - ₹150,000/day</option>
+            <option value="Manpho Convention Center,100000">Manpho Convention Center - ₹100,000/day</option>
+            <option value="ITC Gardenia,200000">ITC Gardenia - ₹200,000/day</option>
+            <option value="White Petals,90000">White Petals - ₹90,000/day</option>
+            <option value="Bangalore Palace,120000">Bangalore Palace - ₹120,000/day</option>
+            <option value="Nandhini Banquet Hall,75000">Nandhini Banquet Hall - ₹75,000/day</option>
+            <option value="Royal Orchid,130000">Royal Orchid - ₹130,000/day</option>
+            <option value="The Ritz-Carlton,250000">The Ritz-Carlton - ₹250,000/day</option>
+            <option value="JW Marriott,220000">JW Marriott - ₹220,000/day</option>
+            <option value="Taj MG Road,180000">Taj MG Road - ₹180,000/day</option>
+            <option value="Shree Sai Convention Hall,60000">Shree Sai Convention Hall - ₹60,000/day</option>
+            <option value="The Leela Palace,240000">The Leela Palace - ₹240,000/day</option>
+            <option value="Eagle Ridge Resort,50000">Eagle Ridge Resort - ₹50,000/day</option>
+            <option value="The Lalit Ashok,200000">The Lalit Ashok - ₹200,000/day</option>
+            <option value="Kanteerava Indoor Stadium,300000">Kanteerava Indoor Stadium - ₹300,000/day</option>
+            <option value="Bangalore International Exhibition Centre,170000">Bangalore International Exhibition Centre - ₹170,000/day</option>
+            <option value="Mount Carmel Convention Centre,85000">Mount Carmel Convention Centre - ₹85,000/day</option>
+            <option value="ITPL Convention Center,90000">ITPL Convention Center - ₹90,000/day</option>
+        </select>
+
+        <label for="people">Number of People</label>
+        <input type="number" id="people" name="people" min="1" required oninput="calculateBill()">
+
+        <label>Meal Preferences</label>
+        <div class="meals">
+            <label>Welcome Drink - ₹50/person<input type="checkbox" id="welcome" name="meals[]" value="Welcome Drink" onclick="calculateBill()"> </label>
+            <label>Breakfast - ₹150/person<input type="checkbox" id="breakfast" name="meals[]" value="Breakfast" onclick="calculateBill()"> </label>
+            <label>Lunch - ₹300/person<input type="checkbox" id="lunch" name="meals[]" value="Lunch" onclick="calculateBill()"> </label>
+            <label>Tea and Snacks - ₹100/person<input type="checkbox" id="tea" name="meals[]" value="Tea and Snacks" onclick="calculateBill()"> </label>
+            <label>Dinner - ₹400/person<input type="checkbox" id="dinner" name="meals[]" value="Dinner" onclick="calculateBill()"> </label>
+        </div>
+        
+
+        <div class="bill-display">
+            <p>Total Bill: ₹<span id="bill">0</span></p>
+        </div>
+
+        <input type="hidden" id="eventID" name="eventID">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        function generateEventID() {
+            const eventID = 'EID' + Math.floor(Math.random() * 1000000);
+            document.getElementById('eventID').value = eventID;
+        }
+
+        function calculateBill() {
+            const venue = document.getElementById('venue').value.split(','); // Split venue and cost
+            const venueCost = parseInt(venue[1] || 0);
+            const people = parseInt(document.getElementById('people').value || 0);
+            const breakfast = document.getElementById('breakfast').checked ? 150 : 0;
+            const lunch = document.getElementById('lunch').checked ? 300 : 0;
+            const tea = document.getElementById('tea').checked ? 100 : 0;
+            const dinner = document.getElementById('dinner').checked ? 400 : 0;
+            const welcome = document.getElementById('welcome').checked ? 50 : 0;
+
+            const mealCostPerPerson = breakfast + lunch + tea + dinner + welcome;
+            const mealCostTotal = mealCostPerPerson * people;
+
+            const total = venueCost + mealCostTotal;
+            document.getElementById('bill').innerText = total;
+        }
+
+        document.getElementById('eventForm').addEventListener('submit', generateEventID);
+    </script>
+</body>
+</html>

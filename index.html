@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Management System</title>
+    <script src="https://kit.fontawesome.com/e7eb419a9f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="index.css">
+
+    </style>
+</head>
+
+<body>
+   
+<div class="header">
+    <div class="logo-container">
+        <img src="logo.jpg" alt="Logo">
+        <h1 class="site-name">CircularGlow</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#home"><i class="fa-solid fa-house"></i> Home</li></a>
+            <li><a href="#aboutus"><i class="fa-solid fa-user"></i> About Us</a></li>
+            <li><a href="#contactme"><i class="fa-solid fa-phone"></i> Contact Me</a></li>
+            <li><input type="text" id="inp" placeholder="Search"><i class="fa-solid fa-magnifying-glass"></i></li>
+        </ul>
+    </nav>
+</div>
+    <div class="container" id="home">
+        <!-- <h1>Welcome to CircularGlow</h1> -->
+    </div>
+
+<!-- ------about us------------- -->
+
+<section class="about-us" id="aboutus">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="WhatsApp Image 2023-10-10 at 11.52.54_10e2de94.jpg" alt="Developer's Photo">
+      </div>
+      <div class="about-content">
+        <h1>About Me</h1>
+        <p>
+          Hi, I’m L. V. Rakshitha, the creator and sole developer behind this project, Event Management System. This platform is a result of my passion for coding, innovation, and creating solutions that make a real difference.
+        </p>
+        <p>
+          I’m currently pursuing a Bachelor’s degree in Computer Science and Engineering at SDM College of Engineering and Technology, Dharwad. My journey in software development has been fueled by my interest in solving real-world problems and learning cutting-edge technologies.
+        </p>
+        <!-- <p>
+          This project is designed to address Event Management, providing users with organized event details. My aim is to make this tool intuitive, efficient, and impactful for everyone who uses it.
+        </p> -->
+        <p>
+          Thank you for taking the time to learn about me and my work. I’m always eager to hear feedback, collaborate, or discuss new ideas. Let’s create something amazing together!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!---------------events--------------->  
+    <div class="trips">
+<div></div><h1 style="color:rgb(93, 11, 11);">Register for the events</h1>
+        <div class="contents">
+            <!-- Birthday -->
+            <div class="trip-item">
+                <a href="register.html"><img src="birth.jpg" alt="Birthday" class="imgs"></a>
+                <h1>Birthday</h1>
+                <p>Celebrate your special day with a memorable birthday event tailored to your preferences.</p>
+            </div>
+    
+            <!-- Anniversary -->
+            <div class="trip-item">
+                <a href="register.html"><img src="anni.webp" alt="Anniversary" class="imgs"></a>
+                <h1>Anniversary</h1>
+                <p>Mark your milestone with a romantic and unforgettable anniversary celebration.</p>
+            </div>
+    
+            <!-- Marriage -->
+            <div class="trip-item">
+                <a href="register.html"><img src="marr.webp" alt="Marriage" class="imgs"></a>
+                <h1>Marriage</h1>
+                <p>Create your dream wedding with stunning venues and exceptional arrangements.</p>
+            </div>
+    
+            <!-- Ring Ceremony -->
+            <div class="trip-item">
+                <a href="register.html"><img src="ring.jpg" alt="Ring Ceremony" class="imgs"></a>
+                <h1>Ring Ceremony</h1>
+                <p>Celebrate your love and commitment with an elegant ring ceremony.</p>
+            </div>
+    
+            <!-- Haldi Function -->
+            <div class="trip-item">
+                <a href="register.html"><img src="haldi.webp" alt="Haldi" class="imgs"></a>
+                <h1>Haldi Function</h1>
+                <p>Add a splash of tradition and fun to your wedding festivities with a vibrant Haldi ceremony.</p>
+            </div>
+    
+            <!-- Mehendi & Sangeet -->
+            <div class="trip-item">
+                <a href="register.html"><img src="mehndi.jpeg" alt="Mehendi & Sangeet" class="imgs"></a>
+                <h1>Mehendi & Sangeet</h1>
+                <p>Dance and celebrate the spirit of togetherness with colorful Mehendi and Sangeet functions.</p>
+            </div>
+    
+            <!-- Naming Ceremony -->
+            <div class="trip-item">
+                <a href="register.html"><img src="name.jpeg" alt="Naming Ceremony" class="imgs"></a>
+                <h1>Naming Ceremony</h1>
+                <p>Welcome the new arrival with a joyous and heartfelt naming ceremony.</p>
+            </div>
+        </div>
+    </div>
+    
+<!--------------------about us--------------- -->
+
+<section class="contact-us" id="contactme">
+    <div class="contact-container">
+      <h1 style=" color : #5b0808">Contact Us</h1>
+      <p>
+        Have questions, feedback, or need assistance? Feel free to reach out! I’d love to hear from you.
+      </p>
+      <div class="contact-form-container">
+        <div class="contact-info">
+          <h2>Contact Details</h2>
+          <p>Email: <a href="mailto:rakshitha@example.com">rakshitha@gmail.com</a></p>
+          <p>Phone: <a href="tel:+1234567890">+91 12345 67890</a></p>
+          <p>Address: SDM College of Engineering and Technology, Dharwad</p>
+        </div>
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <!-- <label for="name">Your Name</label> -->
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="email">Your Email</label> -->
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <!-- <label for="message">Your Message</label> -->
+            <textarea id="message" name="message" rows="5" placeholder="Type your message" required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+        <div class="footer">
+            <!-- <h3>Continue with:</h3> -->
+        
+        <i class="fa-brands fa-google"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+    </div>
+</body>
+
+</html>
